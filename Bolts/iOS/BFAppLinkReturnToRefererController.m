@@ -38,7 +38,11 @@ static const CFTimeInterval kBFViewAnimationDuration = 0.25f;
     self = [super init];
     if (self) {
         self.viewController = viewController;
-        self.navigationController = viewController.navigationController;
+        if ([viewController isKindOfClass:[UINavigationController class]]) {
+            self.navigationController = (UINavigationController *)viewController;
+        } else {
+            self.navigationController = viewController.navigationController;
+        }
 
         if (viewController != nil) {
             NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
