@@ -12,7 +12,6 @@
 		1EC3016318CDAA8400D06D07 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EC3016218CDAA8400D06D07 /* CoreGraphics.framework */; };
 		1EC3016B18CDAA8400D06D07 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1EC3016918CDAA8400D06D07 /* InfoPlist.strings */; };
 		1EC3016D18CDAA8400D06D07 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC3016C18CDAA8400D06D07 /* main.m */; };
-		1EC3017118CDAA8400D06D07 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC3017018CDAA8400D06D07 /* AppDelegate.m */; };
 		1EC3017318CDAA8400D06D07 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EC3017218CDAA8400D06D07 /* Images.xcassets */; };
 		1EC3019118CDABCE00D06D07 /* AppLinkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC3019018CDABCE00D06D07 /* AppLinkTests.m */; };
 		7C60AEBF1ACF08F300747DD7 /* BFCancellationToken.h in Headers */ = {isa = PBXBuildFile; fileRef = 7C60AEBD1ACF08F300747DD7 /* BFCancellationToken.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -79,6 +78,24 @@
 		8EA6BF691805CF5600337041 /* BoltsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EA6BF681805CF5600337041 /* BoltsTests.m */; };
 		8EDDA63017E17DDC00655F8A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9C3CEC17DE9DE000427E62 /* Foundation.framework */; };
 		B242FABB19A567660097ECAE /* BFMeasurementEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B242FAB919A567660097ECAE /* BFMeasurementEvent.m */; };
+		E1BFD4D61B824E2800B99B48 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BFD4D41B824E2800B99B48 /* ViewController.m */; };
+		E1BFD4D71B824E2800B99B48 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1BFD4D51B824E2800B99B48 /* ViewController.xib */; };
+		E1BFD4DF1B825A7600B99B48 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC3017018CDAA8400D06D07 /* AppDelegate.m */; };
+		E1BFD4E01B825AD500B99B48 /* Bolts.m in Sources */ = {isa = PBXBuildFile; fileRef = 8103FA5519900A84000BAE3F /* Bolts.m */; };
+		E1BFD4E11B825AD500B99B48 /* BFTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 8103FA5119900A84000BAE3F /* BFTask.m */; };
+		E1BFD4E21B825AD500B99B48 /* BFTaskCompletionSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8103FA5319900A84000BAE3F /* BFTaskCompletionSource.m */; };
+		E1BFD4E31B825AD500B99B48 /* BFExecutor.m in Sources */ = {isa = PBXBuildFile; fileRef = 8103FA4F19900A84000BAE3F /* BFExecutor.m */; };
+		E1BFD4E41B825AD500B99B48 /* BFCancellationToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C60AEBE1ACF08F300747DD7 /* BFCancellationToken.m */; };
+		E1BFD4E51B825AD500B99B48 /* BFCancellationTokenRegistration.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CA39C911ADE715400DD78CC /* BFCancellationTokenRegistration.m */; };
+		E1BFD4E61B825AD500B99B48 /* BFCancellationTokenSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C60AEC21ACF093D00747DD7 /* BFCancellationTokenSource.m */; };
+		E1BFD4E71B825ADE00B99B48 /* BFAppLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 8103FA5919900A84000BAE3F /* BFAppLink.m */; };
+		E1BFD4E81B825ADE00B99B48 /* BFAppLinkNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8103FA5B19900A84000BAE3F /* BFAppLinkNavigation.m */; };
+		E1BFD4E91B825ADE00B99B48 /* BFWebViewAppLinkResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = 8103FA6719900A84000BAE3F /* BFWebViewAppLinkResolver.m */; };
+		E1BFD4EA1B825ADE00B99B48 /* BFAppLinkReturnToRefererController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8103FA5E19900A84000BAE3F /* BFAppLinkReturnToRefererController.m */; };
+		E1BFD4EB1B825ADE00B99B48 /* BFAppLinkReturnToRefererView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8103FA6019900A84000BAE3F /* BFAppLinkReturnToRefererView.m */; };
+		E1BFD4EC1B825ADE00B99B48 /* BFAppLinkTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 8103FA6319900A84000BAE3F /* BFAppLinkTarget.m */; };
+		E1BFD4ED1B825ADE00B99B48 /* BFMeasurementEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B242FAB919A567660097ECAE /* BFMeasurementEvent.m */; };
+		E1BFD4EE1B825ADE00B99B48 /* BFURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 8103FA6519900A84000BAE3F /* BFURL.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +191,9 @@
 		B242FAB919A567660097ECAE /* BFMeasurementEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFMeasurementEvent.m; sourceTree = "<group>"; };
 		B242FABA19A567660097ECAE /* BFURL_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFURL_Internal.h; sourceTree = "<group>"; };
 		B242FAC019A599CD0097ECAE /* BFMeasurementEvent_Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BFMeasurementEvent_Internal.h; sourceTree = "<group>"; };
+		E1BFD4D31B824E2800B99B48 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E1BFD4D41B824E2800B99B48 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E1BFD4D51B824E2800B99B48 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +250,9 @@
 			children = (
 				1EC3016F18CDAA8400D06D07 /* AppDelegate.h */,
 				1EC3017018CDAA8400D06D07 /* AppDelegate.m */,
+				E1BFD4D31B824E2800B99B48 /* ViewController.h */,
+				E1BFD4D41B824E2800B99B48 /* ViewController.m */,
+				E1BFD4D51B824E2800B99B48 /* ViewController.xib */,
 				1EC3017218CDAA8400D06D07 /* Images.xcassets */,
 				1EC3016718CDAA8400D06D07 /* Supporting Files */,
 			);
@@ -559,6 +582,7 @@
 			files = (
 				1EC3016B18CDAA8400D06D07 /* InfoPlist.strings in Resources */,
 				1EC3017318CDAA8400D06D07 /* Images.xcassets in Resources */,
+				E1BFD4D71B824E2800B99B48 /* ViewController.xib in Resources */,
 				1E9BF8DC18EA0CAD00514B1E /* test.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -584,8 +608,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EC3017118CDAA8400D06D07 /* AppDelegate.m in Sources */,
 				1EC3016D18CDAA8400D06D07 /* main.m in Sources */,
+				E1BFD4D61B824E2800B99B48 /* ViewController.m in Sources */,
+				E1BFD4E31B825AD500B99B48 /* BFExecutor.m in Sources */,
+				E1BFD4E71B825ADE00B99B48 /* BFAppLink.m in Sources */,
+				E1BFD4EB1B825ADE00B99B48 /* BFAppLinkReturnToRefererView.m in Sources */,
+				E1BFD4EA1B825ADE00B99B48 /* BFAppLinkReturnToRefererController.m in Sources */,
+				E1BFD4E11B825AD500B99B48 /* BFTask.m in Sources */,
+				E1BFD4E01B825AD500B99B48 /* Bolts.m in Sources */,
+				E1BFD4ED1B825ADE00B99B48 /* BFMeasurementEvent.m in Sources */,
+				E1BFD4EE1B825ADE00B99B48 /* BFURL.m in Sources */,
+				E1BFD4E51B825AD500B99B48 /* BFCancellationTokenRegistration.m in Sources */,
+				E1BFD4DF1B825A7600B99B48 /* AppDelegate.m in Sources */,
+				E1BFD4EC1B825ADE00B99B48 /* BFAppLinkTarget.m in Sources */,
+				E1BFD4E61B825AD500B99B48 /* BFCancellationTokenSource.m in Sources */,
+				E1BFD4E41B825AD500B99B48 /* BFCancellationToken.m in Sources */,
+				E1BFD4E21B825AD500B99B48 /* BFTaskCompletionSource.m in Sources */,
+				E1BFD4E81B825ADE00B99B48 /* BFAppLinkNavigation.m in Sources */,
+				E1BFD4E91B825ADE00B99B48 /* BFWebViewAppLinkResolver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

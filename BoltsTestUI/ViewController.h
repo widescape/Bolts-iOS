@@ -10,14 +10,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class BFURL;
-
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
-@property (strong, nonatomic) BFURL *receivedAppLinkURL;
-
-+ (AppDelegate *)sharedInstance;
+@interface ViewController : UIViewController
 
 @end

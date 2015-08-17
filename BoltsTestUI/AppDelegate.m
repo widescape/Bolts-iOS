@@ -9,15 +9,24 @@
  */
 
 #import "AppDelegate.h"
+#import "ViewController.h"
+#import <Bolts/Bolts.h>
 
 @implementation AppDelegate
 
++ (AppDelegate *)sharedInstance {
+    return [[UIApplication sharedApplication] delegate];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    [self.window setRootViewController:[[UIViewController alloc] init]];
+    [self.window setRootViewController:[[ViewController alloc] init]];
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    self.receivedAppLinkURL = [BFURL URLWithURL:url];
     return YES;
 }
 
