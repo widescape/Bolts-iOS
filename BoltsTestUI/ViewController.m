@@ -28,6 +28,12 @@
     [[AppDelegate sharedInstance] addObserver:self forKeyPath:@"receivedAppLinkURL" options:0 context:nil];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self showRefererBackButtonIfNeeded];
+}
+
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
@@ -68,10 +74,12 @@
     BFURL *receivedAppLinkURL = [[AppDelegate sharedInstance] receivedAppLinkURL];
     if (receivedAppLinkURL.appLinkReferer != nil) {
         if (self.returnToRefererController == nil) {
-            self.returnToRefererController = [[BFAppLinkReturnToRefererController alloc] init];
+            self.returnToRefererController = [[BFAppLinkReturnToRefererController alloc] initForDisplayAboveNavController:self.navigationController];
             self.returnToRefererController.view.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 1);
             self.returnToRefererController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-            [self.view addSubview:self.returnToRefererController.view];
+            if (self.navigationController == nil) {
+                [self.view addSubview:self.returnToRefererController.view];
+            }
         }
         self.returnToRefererController.view.closed = NO;
         [self.returnToRefererController showViewForRefererAppLink:receivedAppLinkURL.appLinkReferer];
