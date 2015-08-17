@@ -74,15 +74,12 @@
     BFURL *receivedAppLinkURL = [[AppDelegate sharedInstance] receivedAppLinkURL];
     if (receivedAppLinkURL.appLinkReferer != nil) {
         if (self.returnToRefererController == nil) {
-            self.returnToRefererController = [[BFAppLinkReturnToRefererController alloc] initForDisplayAboveNavController:self.navigationController];
-            if (self.navigationController == nil) {
-                [self.view addSubview:self.returnToRefererController.view];
-            }
+            self.returnToRefererController = [[BFAppLinkReturnToRefererController alloc] initForDisplayInViewController:self];
         }
         self.returnToRefererController.view.closed = NO;
         [self.returnToRefererController showViewForRefererAppLink:receivedAppLinkURL.appLinkReferer];
     } else {
-        [self.returnToRefererController removeFromNavController];
+        [self.returnToRefererController removeFromViewController];
     }
 }
 

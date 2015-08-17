@@ -62,12 +62,12 @@
  Initializes a controller suitable for controlling a BFAppLinkReturnToRefererView that is to be displayed
  displayed above the navigation bar.
  */
-- (instancetype)initForDisplayAboveNavController:(UINavigationController *)navController;
+- (instancetype)initForDisplayInViewController:(UIViewController *)viewController;
 
 /*!
- Removes the view entirely from the navigation controller it is currently displayed in.
+ Removes the view entirely from the view controller (or its navigation controller) it is currently displayed in.
  */
-- (void)removeFromNavController;
+- (void)removeFromViewController;
 
 /*!
  Shows the BFAppLinkReturnToRefererView with the specified referer information. If nil or missing data,
