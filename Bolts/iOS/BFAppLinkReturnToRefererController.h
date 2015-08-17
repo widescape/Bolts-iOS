@@ -34,6 +34,17 @@
              didNavigateToAppLink:(BFAppLink *)url
                              type:(BFAppLinkNavigationType)type;
 
+/*! Called when the view will close, but before the closing animation. */
+- (void)returnToRefererController:(BFAppLinkReturnToRefererController *)controller
+                    willCloseView:(BFAppLinkReturnToRefererView *)view
+                         animated:(BOOL)animated;
+
+/*! Called after the view was closed. */
+- (void)returnToRefererController:(BFAppLinkReturnToRefererController *)controller
+                     didCloseView:(BFAppLinkReturnToRefererView *)view
+                         animated:(BOOL)animated;
+
+
 @end
 
 /*!

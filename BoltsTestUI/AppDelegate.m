@@ -16,19 +16,23 @@ NSString *const BFURLWithRefererData = @"bolts://?foo=bar&al_applink_data=%7B%22
 
 @implementation AppDelegate
 
+#pragma mark - Sample Implementation
+
 + (AppDelegate *)sharedInstance {
     return [[UIApplication sharedApplication] delegate];
 }
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    self.receivedAppLinkURL = [BFURL URLWithURL:url];
+    return YES;
+}
+
+#pragma mark - Sample App Setup
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self.window makeKeyAndVisible];
     [self.window setRootViewController:[[ViewController alloc] init]];
-    return YES;
-}
-
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    self.receivedAppLinkURL = [BFURL URLWithURL:url];
     return YES;
 }
 

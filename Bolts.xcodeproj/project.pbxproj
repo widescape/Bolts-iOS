@@ -96,7 +96,6 @@
 		E1BFD4EC1B825ADE00B99B48 /* BFAppLinkTarget.m in Sources */ = {isa = PBXBuildFile; fileRef = 8103FA6319900A84000BAE3F /* BFAppLinkTarget.m */; };
 		E1BFD4ED1B825ADE00B99B48 /* BFMeasurementEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = B242FAB919A567660097ECAE /* BFMeasurementEvent.m */; };
 		E1BFD4EE1B825ADE00B99B48 /* BFURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 8103FA6519900A84000BAE3F /* BFURL.m */; };
-		E1BFD4F21B826FFF00B99B48 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E1BFD4F01B826FFF00B99B48 /* NavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -195,8 +194,6 @@
 		E1BFD4D31B824E2800B99B48 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		E1BFD4D41B824E2800B99B48 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E1BFD4D51B824E2800B99B48 /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
-		E1BFD4EF1B826FFF00B99B48 /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
-		E1BFD4F01B826FFF00B99B48 /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,8 +253,6 @@
 				E1BFD4D31B824E2800B99B48 /* ViewController.h */,
 				E1BFD4D41B824E2800B99B48 /* ViewController.m */,
 				E1BFD4D51B824E2800B99B48 /* ViewController.xib */,
-				E1BFD4EF1B826FFF00B99B48 /* NavigationController.h */,
-				E1BFD4F01B826FFF00B99B48 /* NavigationController.m */,
 				1EC3017218CDAA8400D06D07 /* Images.xcassets */,
 				1EC3016718CDAA8400D06D07 /* Supporting Files */,
 			);
@@ -615,7 +610,6 @@
 			files = (
 				1EC3016D18CDAA8400D06D07 /* main.m in Sources */,
 				E1BFD4D61B824E2800B99B48 /* ViewController.m in Sources */,
-				E1BFD4F21B826FFF00B99B48 /* NavigationController.m in Sources */,
 				E1BFD4E31B825AD500B99B48 /* BFExecutor.m in Sources */,
 				E1BFD4E71B825ADE00B99B48 /* BFAppLink.m in Sources */,
 				E1BFD4EB1B825ADE00B99B48 /* BFAppLinkReturnToRefererView.m in Sources */,

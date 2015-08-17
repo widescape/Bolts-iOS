@@ -45,6 +45,10 @@ static const CFTimeInterval kBFViewAnimationDuration = 0.25f;
         }
 
         if (viewController != nil) {
+            if ([viewController conformsToProtocol:@protocol(BFAppLinkReturnToRefererControllerDelegate)]) {
+                self.delegate = (id<BFAppLinkReturnToRefererControllerDelegate>)viewController;
+            }
+
             NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
             [nc addObserver:self
                    selector:@selector(statusBarFrameWillChange:)
@@ -92,7 +96,11 @@ static const CFTimeInterval kBFViewAnimationDuration = 0.25f;
 }
 
 - (void)showViewForRefererAppLink:(BFAppLink *)refererAppLink {
+    self.view.closed = refererAppLink == nil;
     self.view.refererAppLink = refererAppLink;
+    if (self.view.closed) {
+        return;
+    }
 
     if (self.containerViewController) {
         [self.containerViewController.view addSubview:self.view];
@@ -120,8 +128,6 @@ static const CFTimeInterval kBFViewAnimationDuration = 0.25f;
 - (void)removeFromViewController {
     if (self.containerViewController) {
         [_view removeFromSuperview];
-        self.navigationController = nil;
-        self.viewController = nil;
     }
 }
 
@@ -207,7 +213,11 @@ static const CFTimeInterval kBFViewAnimationDuration = 0.25f;
 }
 
 - (void)closeViewAnimated:(BOOL)animated explicitlyClosed:(BOOL)explicitlyClosed {
+    id<BFAppLinkReturnToRefererControllerDelegate> delegate = _delegate;
     void (^closer)(void) = ^{
+        if ([delegate respondsToSelector:@selector(returnToRefererController:willCloseView:animated:)]) {
+            [delegate returnToRefererController:self willCloseView:self.view animated:animated];
+        }
         if (self.navigationController) {
             [self updateNavigationBarY:_view.statusBarHeight];
         }
@@ -216,20 +226,20 @@ static const CFTimeInterval kBFViewAnimationDuration = 0.25f;
         frame.size.height = 0.0;
         _view.frame = frame;
     };
-
-    if (animated) {
-        [UIView animateWithDuration:kBFViewAnimationDuration animations:^{
-            closer();
-        } completion:^(BOOL finished) {
-            if (explicitlyClosed) {
-                _view.closed = YES;
-            }
-        }];
-    } else {
-        closer();
+    void (^completion)(BOOL finished) = ^(BOOL finished) {
         if (explicitlyClosed) {
             _view.closed = YES;
         }
+        if ([delegate respondsToSelector:@selector(returnToRefererController:didCloseView:animated:)]) {
+            [delegate returnToRefererController:self didCloseView:self.view animated:animated];
+        }
+    };
+
+    if (animated) {
+        [UIView animateWithDuration:kBFViewAnimationDuration animations:closer completion:completion];
+    } else {
+        closer();
+        completion(YES);
     }
 }
 

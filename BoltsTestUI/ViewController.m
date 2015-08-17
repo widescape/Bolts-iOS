@@ -10,16 +10,17 @@
 
 #import "ViewController.h"
 #import "AppDelegate.h"
-#import "NavigationController.h"
 #import <Bolts/Bolts.h>
 
-@interface ViewController ()
+@interface ViewController () <BFAppLinkReturnToRefererControllerDelegate>
 
 @property (nonatomic, strong) BFAppLinkReturnToRefererController *returnToRefererController;
 
 @end
 
 @implementation ViewController
+
+#pragma mark - Sample Implementation
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -50,6 +51,25 @@
     }
 }
 
+- (void)showRefererBackButtonIfNeeded
+{
+    BFURL *receivedAppLinkURL = [AppDelegate sharedInstance].receivedAppLinkURL;
+    if (receivedAppLinkURL.appLinkReferer != nil) {
+        if (self.returnToRefererController == nil) {
+            self.returnToRefererController = [[BFAppLinkReturnToRefererController alloc] initForDisplayInViewController:self];
+        }
+        [self.returnToRefererController showViewForRefererAppLink:receivedAppLinkURL.appLinkReferer];
+    } else {
+        [self.returnToRefererController removeFromViewController];
+    }
+}
+
+- (void)returnToRefererController:(BFAppLinkReturnToRefererController *)controller didCloseView:(BFAppLinkReturnToRefererView *)view animated:(BOOL)animated {
+    [AppDelegate sharedInstance].receivedAppLinkURL = nil;
+}
+
+#pragma mark - Sample App Interface Events
+
 - (IBAction)didTapAppLinkButton:(UIButton *)sender {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:BFURLWithRefererData]];
 }
@@ -65,22 +85,18 @@
 }
 
 - (IBAction)didTapModalButton:(UIButton *)sender {
-    NavigationController *navigationController = [[NavigationController alloc] initWithRootViewController:[[ViewController alloc] init]];
+    UIViewController *viewController = [[ViewController alloc] init];
+    viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(didTapDoneButton:)];
+
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+    navigationController.navigationBar.translucent = NO;
+
     [self presentViewController:navigationController animated:YES completion:nil];
 }
 
-- (void)showRefererBackButtonIfNeeded
+- (void)didTapDoneButton:(id)sender
 {
-    BFURL *receivedAppLinkURL = [[AppDelegate sharedInstance] receivedAppLinkURL];
-    if (receivedAppLinkURL.appLinkReferer != nil) {
-        if (self.returnToRefererController == nil) {
-            self.returnToRefererController = [[BFAppLinkReturnToRefererController alloc] initForDisplayInViewController:self];
-        }
-        self.returnToRefererController.view.closed = NO;
-        [self.returnToRefererController showViewForRefererAppLink:receivedAppLinkURL.appLinkReferer];
-    } else {
-        [self.returnToRefererController removeFromViewController];
-    }
+    [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
