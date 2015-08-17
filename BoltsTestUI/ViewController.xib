@@ -16,7 +16,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Igs-Tn-XeW">
-                    <rect key="frame" x="94" y="253" width="131" height="44"/>
+                    <rect key="frame" x="88" y="201" width="145" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Invoke app link"/>
                     <connections>
@@ -24,11 +24,19 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bdD-79-eix">
-                    <rect key="frame" x="88" y="304" width="145" height="44"/>
+                    <rect key="frame" x="88" y="252" width="145" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Flip to other view"/>
                     <connections>
                         <action selector="didTapFlipButton:" destination="-1" eventType="touchUpInside" id="2fY-Bt-WHm"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5fA-An-dik">
+                    <rect key="frame" x="88" y="303" width="145" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Open modal"/>
+                    <connections>
+                        <action selector="didTapModalButton:" destination="-1" eventType="touchUpInside" id="I6b-PJ-qLD"/>
                     </connections>
                 </button>
             </subviews>

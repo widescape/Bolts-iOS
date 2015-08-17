@@ -10,16 +10,6 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSString *const BFURLWithRefererData;
-
-@class BFURL;
-
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
-@property (strong, nonatomic) BFURL *receivedAppLinkURL;
-
-+ (AppDelegate *)sharedInstance;
+@interface NavigationController : UINavigationController
 
 @end
