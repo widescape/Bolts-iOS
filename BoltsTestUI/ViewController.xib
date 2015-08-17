@@ -20,7 +20,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Invoke app link"/>
                     <connections>
-                        <action selector="didTapAppLinkButton:" destination="-1" eventType="touchUpInside" id="nLs-hk-6Iy"/>
+                        <action selector="appLinkButtonTapped:" destination="-1" eventType="touchUpInside" id="DhN-oq-dxY"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bdD-79-eix">
@@ -28,7 +28,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Flip to other view"/>
                     <connections>
-                        <action selector="didTapFlipButton:" destination="-1" eventType="touchUpInside" id="2fY-Bt-WHm"/>
+                        <action selector="flipButtonTapped:" destination="-1" eventType="touchUpInside" id="3OW-5V-oYK"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5fA-An-dik">
@@ -36,7 +36,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Open modal"/>
                     <connections>
-                        <action selector="didTapModalButton:" destination="-1" eventType="touchUpInside" id="I6b-PJ-qLD"/>
+                        <action selector="modalButtonTapped:" destination="-1" eventType="touchUpInside" id="L92-gH-zUF"/>
                     </connections>
                 </button>
             </subviews>

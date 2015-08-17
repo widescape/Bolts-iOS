@@ -70,11 +70,11 @@
 
 #pragma mark - Sample App Interface Events
 
-- (IBAction)didTapAppLinkButton:(UIButton *)sender {
+- (IBAction)appLinkButtonTapped:(UIButton *)sender {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:BFURLWithRefererData]];
 }
 
-- (IBAction)didTapFlipButton:(UIButton *)sender {
+- (IBAction)flipButtonTapped:(UIButton *)sender {
     if (self.presentingViewController != nil && self.navigationController == nil) {
         [self dismissViewControllerAnimated:YES completion:nil];
     } else {
@@ -84,9 +84,9 @@
     }
 }
 
-- (IBAction)didTapModalButton:(UIButton *)sender {
+- (IBAction)modalButtonTapped:(UIButton *)sender {
     UIViewController *viewController = [[ViewController alloc] init];
-    viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(didTapDoneButton:)];
+    viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonTapped:)];
 
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     navigationController.navigationBar.translucent = NO;
@@ -94,7 +94,7 @@
     [self presentViewController:navigationController animated:YES completion:nil];
 }
 
-- (void)didTapDoneButton:(id)sender
+- (void)doneButtonTapped:(id)sender
 {
     [self.presentedViewController dismissViewControllerAnimated:YES completion:nil];
 }
