@@ -19,12 +19,12 @@ static const CFTimeInterval kBFViewAnimationDuration = 0.25f;
 @interface BFAppLinkReturnToRefererController ()
 
 @property (nonatomic, readonly) UIViewController *containerViewController;
-@property (nonatomic) UIViewController *viewController;
-@property (nonatomic) UINavigationController *navigationController;
 
 @end
 
 @implementation BFAppLinkReturnToRefererController {
+    UINavigationController *_navigationController;
+    UIViewController *_viewController;
     BFAppLinkReturnToRefererView *_view;
 }
 
@@ -37,11 +37,11 @@ static const CFTimeInterval kBFViewAnimationDuration = 0.25f;
 - (instancetype)initForDisplayInViewController:(UIViewController *)viewController {
     self = [super init];
     if (self) {
-        self.viewController = viewController;
+        _viewController = viewController;
         if ([viewController isKindOfClass:[UINavigationController class]]) {
-            self.navigationController = (UINavigationController *)viewController;
+            _navigationController = (UINavigationController *)viewController;
         } else {
-            self.navigationController = viewController.navigationController;
+            _navigationController = viewController.navigationController;
         }
 
         if (viewController != nil) {
@@ -90,7 +90,7 @@ static const CFTimeInterval kBFViewAnimationDuration = 0.25f;
     _view = view;
     _view.delegate = self;
 
-    if (self.navigationController) {
+    if (_navigationController) {
         _view.includeStatusBarInSize = BFIncludeStatusBarInSizeAlways;
     }
 }
@@ -111,7 +111,7 @@ static const CFTimeInterval kBFViewAnimationDuration = 0.25f;
     }
     [self.view sizeToFit];
 
-    if (self.navigationController) {
+    if (_navigationController) {
         if (!self.view.closed) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self moveNavigationBar];
@@ -150,7 +150,7 @@ static const CFTimeInterval kBFViewAnimationDuration = 0.25f;
     CGRect newFrame;
     [rectValue getValue:&newFrame];
 
-    if (self.navigationController && !_view.closed) {
+    if (_navigationController && !_view.closed) {
         if (CGRectGetHeight(newFrame) == 40) {
             UIViewAnimationOptions options = UIViewAnimationOptionBeginFromCurrentState;
             [UIView animateWithDuration:kBFViewAnimationDuration delay:0.0 options:options animations:^{
@@ -165,7 +165,7 @@ static const CFTimeInterval kBFViewAnimationDuration = 0.25f;
     CGRect newFrame;
     [rectValue getValue:&newFrame];
 
-    if (self.navigationController && !_view.closed) {
+    if (_navigationController && !_view.closed) {
         if (CGRectGetHeight(newFrame) == 40) {
             UIViewAnimationOptions options = UIViewAnimationOptionBeginFromCurrentState;
             [UIView animateWithDuration:kBFViewAnimationDuration delay:0.0 options:options animations:^{
@@ -177,7 +177,7 @@ static const CFTimeInterval kBFViewAnimationDuration = 0.25f;
 }
 
 - (void)orientationDidChange:(NSNotificationCenter *)notification {
-    if (self.navigationController && !_view.closed && CGRectGetHeight(_view.bounds) > 0) {
+    if (_navigationController && !_view.closed && CGRectGetHeight(_view.bounds) > 0) {
         dispatch_async(dispatch_get_main_queue(), ^{
             [self moveNavigationBar];
         });
@@ -185,7 +185,7 @@ static const CFTimeInterval kBFViewAnimationDuration = 0.25f;
 }
 
 - (UIViewController *)containerViewController {
-    return self.navigationController ?: self.viewController;
+    return _navigationController ?: _viewController;
 }
 
 - (void)moveNavigationBar {
@@ -197,14 +197,14 @@ static const CFTimeInterval kBFViewAnimationDuration = 0.25f;
 }
 
 - (void)updateNavigationBarY:(CGFloat)y {
-    UINavigationBar *navigationBar = self.navigationController.navigationBar;
+    UINavigationBar *navigationBar = _navigationController.navigationBar;
     CGRect navigationBarFrame = navigationBar.frame;
     CGFloat oldContainerViewY = CGRectGetMaxY(navigationBarFrame);
     navigationBarFrame.origin.y = y;
     navigationBar.frame = navigationBarFrame;
 
     CGFloat dy = CGRectGetMaxY(navigationBarFrame) - oldContainerViewY;
-    UIView *containerView = self.navigationController.visibleViewController.view.superview;
+    UIView *containerView = _navigationController.visibleViewController.view.superview;
     containerView.frame = UIEdgeInsetsInsetRect(containerView.frame, UIEdgeInsetsMake(dy, 0.0, 0.0, 0.0));
 }
 
@@ -218,7 +218,7 @@ static const CFTimeInterval kBFViewAnimationDuration = 0.25f;
         if ([delegate respondsToSelector:@selector(returnToRefererController:willCloseView:animated:)]) {
             [delegate returnToRefererController:self willCloseView:self.view animated:animated];
         }
-        if (self.navigationController) {
+        if (_navigationController) {
             [self updateNavigationBarY:_view.statusBarHeight];
         }
 
