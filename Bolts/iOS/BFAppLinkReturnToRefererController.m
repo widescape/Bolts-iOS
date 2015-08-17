@@ -61,6 +61,7 @@ static const CFTimeInterval kBFViewAnimationDuration = 0.25f;
 - (BFAppLinkReturnToRefererView *)view {
     if (!_view) {
         self.view = [[BFAppLinkReturnToRefererView alloc] initWithFrame:CGRectZero];
+        _view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         if (_navigationController) {
             [_navigationController.view addSubview:_view];
         }
@@ -84,10 +85,13 @@ static const CFTimeInterval kBFViewAnimationDuration = 0.25f;
 - (void)showViewForRefererAppLink:(BFAppLink *)refererAppLink {
     self.view.refererAppLink = refererAppLink;
 
-    [_view sizeToFit];
+    if (CGRectIsEmpty(self.view.frame)) {
+        self.view.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.superview.bounds), 1);
+    }
+    [self.view sizeToFit];
 
     if (_navigationController) {
-        if (!_view.closed) {
+        if (!self.view.closed) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self moveNavigationBar];
             });

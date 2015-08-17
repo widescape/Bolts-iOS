@@ -75,8 +75,6 @@
     if (receivedAppLinkURL.appLinkReferer != nil) {
         if (self.returnToRefererController == nil) {
             self.returnToRefererController = [[BFAppLinkReturnToRefererController alloc] initForDisplayAboveNavController:self.navigationController];
-            self.returnToRefererController.view.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 1);
-            self.returnToRefererController.view.autoresizingMask = UIViewAutoresizingFlexibleWidth;
             if (self.navigationController == nil) {
                 [self.view addSubview:self.returnToRefererController.view];
             }
